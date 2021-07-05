@@ -19,7 +19,8 @@ export default function Index() {
       >
         <Box>
           <Typography variant='h4' component='h1' gutterBottom>
-            Welcome to Pinnacle Software
+            Welcome to <br />
+            <i>Pinnacle Software</i>
           </Typography>
 
           <img height='400px' src='../img/UnderDev.png' alt='underCon' />

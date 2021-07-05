@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/ecommerce.pinnasofts.com/
+    - export DEPLOYPATH=/home/pinnzzxc/ecommerce.pinnasofts.com/
     - /bin/cp -R * $DEPLOYPATH
