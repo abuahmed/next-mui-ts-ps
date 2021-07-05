@@ -13,6 +13,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@material-ui/core": "next",
+    "@material-ui/styles": "next",
     "clsx": "latest",
     "next": "latest",
     "react": "latest",
