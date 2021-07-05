@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-with-typescript",
+  "name": "nextjs-mui-ts-ps",
   "version": "5.0.0",
   "private": true,
   "dependencies": {
@@ -16,7 +16,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
+    "start": "next build && NODE_ENV=production node server.js",
     "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
   },
   "devDependencies": {
