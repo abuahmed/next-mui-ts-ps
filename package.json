@@ -16,6 +16,8 @@
     "@material-ui/lab": "^5.0.0-alpha.34",
     "@material-ui/styles": "^4.11.4",
     "@material-ui/system": "^4.11.3",
+    "@types/aos": "^3.0.3",
+    "aos": "^2.3.4",
     "clsx": "latest",
     "next": "latest",
     "react": "latest",
