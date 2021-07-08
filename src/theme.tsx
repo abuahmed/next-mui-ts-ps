@@ -10,7 +10,7 @@ const theme = createTheme({
       main: '#008000',
     },
     secondary: {
-      main: '#ff8c00',
+      main: '#ffa500',
     },
     error: {
       main: red.A400,
@@ -21,7 +21,7 @@ const theme = createTheme({
     },
     text: {
       primary: '#008000',
-      secondary: '#000',
+      secondary: '#ffa500',
     },
   },
   typography,

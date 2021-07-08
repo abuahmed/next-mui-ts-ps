@@ -11,14 +11,27 @@ import Container from '@material-ui/core/Container';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+  faCartArrowDown,
+  faCartPlus,
   faEnvelope,
+  faEnvelopeOpen,
   faGlobe,
+  faLocationArrow,
   faMobile,
   faMobileAlt,
+  faPeopleArrows,
+  faPhone,
+  faRestroom,
+  faSearchLocation,
   faShoppingBag,
   faShoppingCart,
+  faStore,
+  faTablet,
+  faUserPlus,
+  faWarehouse,
 } from '@fortawesome/free-solid-svg-icons';
 import {
+  faAppStore,
   faFacebook,
   faInstagram,
   faTwitter,
@@ -27,15 +40,13 @@ import {
 import useStyles from '../header/styles';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemButton from '@material-ui/core/ListItemButton';
 import { LightBulbIcon } from '../../ProTip';
-import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 
-const Item = styled(Paper)(({ theme }) => ({
+const Item = styled('div')(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: 'left',
@@ -45,18 +56,21 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function Footer() {
   const classes = useStyles();
+
   return (
     <>
-      <Box className={classes.socialBackground}>
+      <Box className={classes.footerBackground}>
         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'>
           <path
             fill='#fff'
-            fill-opacity='1'
+            fillOpacity='1'
             d='M0,96L48,128C96,160,192,224,288,213.3C384,203,480,117,576,117.3C672,117,768,203,864,202.7C960,203,1056,117,1152,117.3C1248,117,1344,203,1392,245.3L1440,288L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'
           ></path>
         </svg>
         <Container maxWidth='sm'>
           <Stack
+            data-aos='zoom-in'
+            data-aos-delay='500'
             direction='row'
             spacing={3}
             sx={{ fontSize: '3rem' }}
@@ -79,7 +93,7 @@ export default function Footer() {
         </Container>
       </Box>
       <Box
-        className={classes.socialBackground}
+        className={classes.footerBackground}
         sx={{
           display: 'flex',
           flexDirection: 'column',
@@ -89,110 +103,228 @@ export default function Footer() {
         }}
       >
         <Container maxWidth='lg' color='white'>
-          <Grid container direction='row' spacing={1}>
-            <Grid item lg={6} sm={12} xl={6} xs={12}>
-              <Stack spacing={0} sx={{ mt: 4 }}>
-                <Item>
-                  <Typography sx={{ mt: 1 }} variant='h6' component='div'>
-                    Contact
-                  </Typography>
-                  <Divider orientation='horizontal' flexItem />
+          <Paper elevation={5} sx={{ background: 'transparent' }}>
+            <Grid container direction='row' spacing={1}>
+              <Grid
+                item
+                data-aos='fade-right'
+                data-aos-delay='500'
+                lg={6}
+                sm={4}
+                xl={6}
+                xs={12}
+              >
+                <Stack spacing={0} sx={{ mt: 4 }}>
+                  <Item>
+                    <Typography sx={{ mt: 1 }} variant='h6' component='div'>
+                      Contact
+                    </Typography>
+                    <Divider orientation='horizontal' flexItem />
+                    <List sx={{ fontSize: '2rem' }}>
+                      <ListItemButton component='a' href='#customized-list'>
+                        <ListItemIcon>
+                          <FontAwesomeIcon icon={faPhone} />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary='+251-945-004-259'
+                          secondary='Mon-Fri 9am-6pm'
+                          primaryTypographyProps={{
+                            fontWeight: '700',
+                            variant: 'h6',
+                          }}
+                          secondaryTypographyProps={{
+                            fontWeight: '500',
+                            variant: 'h6',
+                          }}
+                        />
+                      </ListItemButton>
 
-                  <Typography sx={{ mt: 1 }} variant='body1' component='div'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolorem ex obcaecati blanditiis reprehenderit ab mollitia
-                    voluptatem consectetur?
-                  </Typography>
-                  <MuiLink
-                    color='inherit'
-                    href='mailto:contact@pinnasofts.com'
-                    sx={{ textDecoration: 'none', fontSize: '1.5rem' }}
-                  >
-                    <FontAwesomeIcon icon={faEnvelope} />
-                    &nbsp;contact@pinnasofts.com
-                  </MuiLink>
-                </Item>
-              </Stack>
+                      <ListItemButton
+                        component='a'
+                        href='mailto:contact@pinnasofts.com'
+                      >
+                        <ListItemIcon>
+                          <FontAwesomeIcon icon={faEnvelopeOpen} />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary='contact@pinnasofts.com'
+                          secondary='Online Support'
+                          primaryTypographyProps={{
+                            fontWeight: '700',
+                            variant: 'h6',
+                          }}
+                          secondaryTypographyProps={{
+                            fontWeight: '500',
+                            variant: 'h6',
+                          }}
+                        />
+                      </ListItemButton>
+
+                      <ListItemButton component='a' href='#customized-list'>
+                        <ListItemIcon>
+                          <FontAwesomeIcon icon={faLocationArrow} />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary='Addis Ababa,Ethiopia'
+                          secondary='Bethel Street, AA'
+                          primaryTypographyProps={{
+                            fontWeight: '700',
+                            variant: 'h6',
+                          }}
+                          secondaryTypographyProps={{
+                            fontWeight: '500',
+                            variant: 'h6',
+                          }}
+                        />
+                      </ListItemButton>
+                    </List>
+                  </Item>
+                </Stack>
+              </Grid>
+              <Grid
+                item
+                data-aos='fade-up'
+                data-aos-delay='1000'
+                lg={3}
+                sm={4}
+                xl={3}
+                xs={12}
+              >
+                <Stack spacing={0} sx={{ mt: 4 }}>
+                  <Item>
+                    <Typography sx={{ mt: 1 }} variant='h6' component='div'>
+                      Services
+                    </Typography>
+                    <Divider orientation='horizontal' flexItem />
+                    <List sx={{ fontSize: '2rem' }}>
+                      <ListItemButton component='a' href='#customized-list'>
+                        <ListItemIcon>
+                          <FontAwesomeIcon icon={faCartArrowDown} />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary='E-commerce Solutions'
+                          primaryTypographyProps={{
+                            fontWeight: '700',
+                            variant: 'h6',
+                          }}
+                        />
+                      </ListItemButton>
+
+                      <ListItemButton component='a' href='#customized-list'>
+                        <ListItemIcon>
+                          <FontAwesomeIcon icon={faTablet} />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary='Mobile Solutions'
+                          primaryTypographyProps={{
+                            fontWeight: '700',
+                            variant: 'h6',
+                          }}
+                        />
+                      </ListItemButton>
+
+                      <ListItemButton component='a' href='#customized-list'>
+                        <ListItemIcon>
+                          <FontAwesomeIcon icon={faGlobe} />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary='Website Solutions'
+                          primaryTypographyProps={{
+                            fontWeight: '700',
+                            variant: 'h6',
+                          }}
+                        />
+                      </ListItemButton>
+
+                      <ListItemButton component='a' href='#customized-list'>
+                        <ListItemIcon>
+                          <FontAwesomeIcon icon={faShoppingBag} />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary='Marketing Solutions'
+                          primaryTypographyProps={{
+                            fontWeight: '700',
+                            variant: 'h6',
+                          }}
+                        />
+                      </ListItemButton>
+                    </List>
+                  </Item>
+                </Stack>
+              </Grid>
+              <Grid
+                item
+                data-aos='fade-left'
+                data-aos-delay='1500'
+                lg={3}
+                sm={4}
+                xl={3}
+                xs={12}
+              >
+                <Stack spacing={0} sx={{ mt: 4 }}>
+                  <Item>
+                    <Typography sx={{ mt: 1 }} variant='h6' component='div'>
+                      Products
+                    </Typography>
+                    <Divider orientation='horizontal' flexItem />
+                    <List sx={{ fontSize: '2rem' }}>
+                      <ListItemButton component='a' href='#customized-list'>
+                        <ListItemIcon>
+                          <FontAwesomeIcon icon={faPeopleArrows} />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary='Pinna-Recruitment'
+                          primaryTypographyProps={{
+                            fontWeight: '700',
+                            variant: 'h6',
+                          }}
+                        />
+                      </ListItemButton>
+
+                      <ListItemButton component='a' href='#customized-list'>
+                        <ListItemIcon>
+                          <FontAwesomeIcon icon={faWarehouse} />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary='Pinna-Rental'
+                          primaryTypographyProps={{
+                            fontWeight: '700',
+                            variant: 'h6',
+                          }}
+                        />
+                      </ListItemButton>
+
+                      <ListItemButton component='a' href='#customized-list'>
+                        <ListItemIcon>
+                          <FontAwesomeIcon icon={faPeopleArrows} />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary='Pinna-CRM'
+                          primaryTypographyProps={{
+                            fontWeight: '700',
+                            variant: 'h6',
+                          }}
+                        />
+                      </ListItemButton>
+
+                      <ListItemButton component='a' href='#customized-list'>
+                        <ListItemIcon>
+                          <FontAwesomeIcon icon={faStore} />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary='Pinna-Stock'
+                          primaryTypographyProps={{
+                            fontWeight: '700',
+                            variant: 'h6',
+                          }}
+                        />
+                      </ListItemButton>
+                    </List>
+                  </Item>
+                </Stack>
+              </Grid>
             </Grid>
-            <Grid item lg={3} sm={6} xl={3} xs={12}>
-              <Stack spacing={0} sx={{ mt: 4 }}>
-                <Item>
-                  <Typography sx={{ mt: 1 }} variant='h6' component='div'>
-                    Services
-                  </Typography>
-                  <Divider orientation='horizontal' flexItem />
-                  <List>
-                    <ListItemButton component='a' href='#customized-list'>
-                      <ListItemIcon sx={{ minWidth: '24px' }}>
-                        <FontAwesomeIcon icon={faShoppingCart} />
-                      </ListItemIcon>
-                      <ListItemText primary='E-commerce Solutions' />
-                    </ListItemButton>
-
-                    <ListItemButton component='a' href='#customized-list'>
-                      <ListItemIcon sx={{ minWidth: '24px' }}>
-                        <FontAwesomeIcon icon={faMobile} />
-                      </ListItemIcon>
-                      <ListItemText primary='Mobile Solutions' />
-                    </ListItemButton>
-
-                    <ListItemButton component='a' href='#customized-list'>
-                      <ListItemIcon sx={{ minWidth: '24px' }}>
-                        <FontAwesomeIcon icon={faGlobe} />
-                      </ListItemIcon>
-                      <ListItemText primary='Website Solutions' />
-                    </ListItemButton>
-
-                    <ListItemButton component='a' href='#customized-list'>
-                      <ListItemIcon sx={{ minWidth: '24px' }}>
-                        <FontAwesomeIcon icon={faShoppingBag} />
-                      </ListItemIcon>
-                      <ListItemText primary='Marketing Solutions' />
-                    </ListItemButton>
-                  </List>
-                </Item>
-              </Stack>
-            </Grid>
-            <Grid item lg={3} sm={6} xl={3} xs={12}>
-              <Stack spacing={0} sx={{ mt: 4 }}>
-                <Item>
-                  <Typography sx={{ mt: 1 }} variant='h6' component='div'>
-                    Products
-                  </Typography>
-                  <Divider orientation='horizontal' flexItem />
-                  <List>
-                    <ListItemButton component='a' href='#customized-list'>
-                      <ListItemIcon sx={{ minWidth: '24px' }}>
-                        <LightBulbIcon />
-                      </ListItemIcon>
-                      <ListItemText primary='Pinna-Recruitment' />
-                    </ListItemButton>
-
-                    <ListItemButton component='a' href='#customized-list'>
-                      <ListItemIcon sx={{ minWidth: '24px' }}>
-                        <LightBulbIcon />
-                      </ListItemIcon>
-                      <ListItemText primary='Pinna-Rental' />
-                    </ListItemButton>
-
-                    <ListItemButton component='a' href='#customized-list'>
-                      <ListItemIcon sx={{ minWidth: '24px' }}>
-                        <LightBulbIcon />
-                      </ListItemIcon>
-                      <ListItemText primary='Pinna-CRM' />
-                    </ListItemButton>
-
-                    <ListItemButton component='a' href='#customized-list'>
-                      <ListItemIcon sx={{ minWidth: '24px' }}>
-                        <LightBulbIcon />
-                      </ListItemIcon>
-                      <ListItemText primary='Pinna-Stock' />
-                    </ListItemButton>
-                  </List>
-                </Item>
-              </Stack>
-            </Grid>
-          </Grid>
+          </Paper>
           <Box>
             <Typography variant='body2' color='white' align='center'>
               <>

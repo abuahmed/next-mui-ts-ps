@@ -16,20 +16,23 @@ export default makeStyles((theme) => ({
     socialBackground: {
         background: theme.palette.background.paper,
     },
-    listItems: {
-        display: 'block',
-        listStyleType: 'none',
-        position: 'relative',
-        li: {
-            marginBottom: '0.5rem',
-            textDecoration: 'none',
-            a: {
-                color: 'white',
-                textDecoration: 'none',
-                '&:hover': {
-                    color: theme.palette.text.primary
-                }
-            }
-        }
+    flexStyle: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        [theme.breakpoints.up('lg')]: {
+            flexDirection: 'row',
+            alignItems: 'start',
+        },
+    },
+    imgMargin: {
+        marginLeft: 'auto',
+        [theme.breakpoints.up('lg')]: {
+            marginLeft: '-100px',
+        },
+    },
+    ArrowIcon: {
+        fontSize: '2rem',
+        fontWeight: 'bold',
+        color: 'orange',
     }
 }));

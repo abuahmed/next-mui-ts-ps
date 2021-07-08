@@ -12,5 +12,13 @@ export default makeStyles((theme) => ({
 
     backgroundCol: {
         background: theme.palette.background.default
-    }
+    },
+    flexStyle: {
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column',
+        },
+        [theme.breakpoints.up('sm')]: {
+            flexDirection: 'row',
+        },
+    },
 }));

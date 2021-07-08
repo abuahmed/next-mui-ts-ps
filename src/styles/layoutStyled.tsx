@@ -12,6 +12,7 @@ const MainLayoutRoot = experimentalStyled('div')(({ theme }) => ({
 
 const MainLayoutWrapper = experimentalStyled('div')({
   display: 'flex',
+  flexDirection: 'column',
   flex: '1 1 auto',
   overflow: 'hidden',
   paddingTop: 64,
