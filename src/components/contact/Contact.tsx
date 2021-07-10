@@ -37,7 +37,7 @@ function Contact({}: Props): ReactElement {
               marginBottom: '10px',
             }}
           ></Divider>
-          <Grid container xs={12}>
+          <Grid container>
             <Grid
               item
               data-aos='fade-right'
@@ -46,7 +46,7 @@ function Contact({}: Props): ReactElement {
               xs={12}
               sx={{ padding: 2 }}
             >
-              <Typography variant='body2' fontSize='15px' lineHeight='2rem'>
+              <Typography variant='body1' color='text.secondary'>
                 The future of business is online, and whether you’re starting
                 out as a new business owner, or an established business looking
                 to pivot into the online world, there’s never been a better time
@@ -75,19 +75,19 @@ function Contact({}: Props): ReactElement {
                 </Typography>
 
                 <TextField
-                  id='standard-basic'
+                  id='name'
                   label='Name'
                   variant='outlined'
                   margin='normal'
                 />
                 <TextField
-                  id='standard-basic'
+                  id='email'
                   label='Email or Phone'
                   variant='outlined'
                   margin='normal'
                 />
                 <TextField
-                  id='standard-basic'
+                  id='message'
                   label='Message'
                   variant='outlined'
                   multiline

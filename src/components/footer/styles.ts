@@ -1,15 +1,7 @@
 import { makeStyles } from "@material-ui/styles";
 
 export default makeStyles((theme) => ({
-    link: {
-        color: 'black',
-        '&:hover': {
-            textDecoration: 'none',
-        },
-        '&:not(:first-child)': {
-            paddingLeft: 15
-        }
-    },
+
     footerBackground: {
         background: theme.palette.background.default
     },

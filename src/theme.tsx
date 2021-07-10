@@ -1,30 +1,44 @@
-import { createTheme } from '@material-ui/core/styles';
-import { colors } from '@material-ui/core';
-import { red } from '@material-ui/core/colors';
-//import shadows from './shadows';
+import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import defaultTheme from './default';
 import typography from './typography';
-// Create a theme instance.
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#008000',
-    },
-    secondary: {
-      main: '#ffa500',
-    },
-    error: {
-      main: red.A400,
-    },
-    background: {
-      default: 'linear-gradient(to right, green 30%, orange 90%)',
-      paper: 'linear-gradient(to right, green 30%, orange 75%)',
-    },
-    text: {
-      primary: '#008000',
-      secondary: '#ffa500',
-    },
-  },
-  typography,
-});
 
+const overrides = {
+  typography: typography,
+};
+// const overrides = {
+//   typography: {
+//     h1: {
+//       fontSize: '3rem',
+//     },
+//     h2: {
+//       fontSize: '2rem',
+//     },
+//     h3: {
+//       fontSize: '1.64rem',
+//     },
+//     h4: {
+//       fontSize: '1.5rem',
+//     },
+//     h5: {
+//       fontSize: '1.285rem',
+//     },
+//     h6: {
+//       fontSize: '1.142rem',
+//     },
+//   },
+// };
+let theme = createTheme({ ...defaultTheme }); //{ ...defaultTheme, ...overrides });
+// theme.typography.h1 = {
+//   fontSize: '2rem',
+//   [theme.breakpoints.up('sm')]: {
+//     fontSize: '2.4rem',
+//   },
+// };
+//console.log(theme);
+//theme.typography = typography;
+// const themes = {
+//   default: createTheme({ ...defaultTheme, ...overrides }),
+// };
+// let theme = createTheme(defaultTheme);
+// theme = responsiveFontSizes(theme);
 export default theme;

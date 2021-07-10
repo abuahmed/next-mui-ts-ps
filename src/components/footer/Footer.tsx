@@ -12,38 +12,28 @@ import Container from '@material-ui/core/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCartArrowDown,
-  faCartPlus,
-  faEnvelope,
   faEnvelopeOpen,
   faGlobe,
   faLocationArrow,
-  faMobile,
-  faMobileAlt,
   faPeopleArrows,
   faPhone,
-  faRestroom,
-  faSearchLocation,
   faShoppingBag,
-  faShoppingCart,
   faStore,
   faTablet,
-  faUserPlus,
   faWarehouse,
 } from '@fortawesome/free-solid-svg-icons';
 import {
-  faAppStore,
   faFacebook,
   faInstagram,
   faTwitter,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
-import useStyles from '../header/styles';
+import useStyles from './styles';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemButton from '@material-ui/core/ListItemButton';
-import { LightBulbIcon } from '../../ProTip';
 import Link from '@material-ui/core/Link';
 
 const Item = styled('div')(({ theme }) => ({
@@ -134,7 +124,8 @@ export default function Footer() {
                           }}
                           secondaryTypographyProps={{
                             fontWeight: '500',
-                            variant: 'h6',
+                            variant: 'body1',
+                            color: 'orange',
                           }}
                         />
                       </ListItemButton>
@@ -155,7 +146,8 @@ export default function Footer() {
                           }}
                           secondaryTypographyProps={{
                             fontWeight: '500',
-                            variant: 'h6',
+                            variant: 'body1',
+                            color: 'orange',
                           }}
                         />
                       </ListItemButton>
@@ -173,7 +165,8 @@ export default function Footer() {
                           }}
                           secondaryTypographyProps={{
                             fontWeight: '500',
-                            variant: 'h6',
+                            variant: 'body1',
+                            color: 'orange',
                           }}
                         />
                       </ListItemButton>
@@ -326,7 +319,7 @@ export default function Footer() {
             </Grid>
           </Paper>
           <Box>
-            <Typography variant='body2' color='white' align='center'>
+            <Typography variant='body1' color='white' align='center'>
               <>
                 {'Copyright © '}
                 <MuiLink

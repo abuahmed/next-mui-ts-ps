@@ -18,21 +18,28 @@ const MainLayoutWrapper = experimentalStyled('div')({
   paddingTop: 64,
 });
 
-const MainLayoutContainer = experimentalStyled('div')({
-  display: 'flex',
-  flex: '1 1 auto',
-  overflow: 'hidden',
-});
+const GradientBackground = experimentalStyled('div')(({ theme }) => ({
+  background: theme.palette.background.default,
+}));
 
-const MainLayoutContent = experimentalStyled('div')({
-  flex: '1 1 auto',
-  height: '100%',
-  overflow: 'auto',
-});
+const NormalBackground = experimentalStyled('div')(({ theme }) => ({
+  background: theme.palette.background.paper,
+}));
+
+const ShadowStyled = experimentalStyled('div')(({ theme }) => ({
+  boxShadow: '0 0.5rem 1rem rgba(0, 0, 0, 0.15)',
+  [theme.breakpoints.up('sm')]: {
+    boxShadow: '0 .125rem .25rem rgba($black, .075)',
+  },
+  [theme.breakpoints.up('lg')]: {
+    boxShadow: '0 1rem 3rem rgba($black, .175)',
+  },
+}));
 
 export {
-  MainLayoutContainer,
-  MainLayoutContent,
+  GradientBackground,
+  NormalBackground,
   MainLayoutRoot,
   MainLayoutWrapper,
+  ShadowStyled,
 };

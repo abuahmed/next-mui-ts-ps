@@ -1,29 +1,25 @@
-import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Card, CardContent, CardMedia } from '@material-ui/core';
+import React, { ReactElement } from 'react';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import CardHeader from '@material-ui/core/CardHeader';
 import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import Stack from '@material-ui/core/Stack';
 import Typography from '@material-ui/core/Typography';
-import React, { ReactElement } from 'react';
+import { useTheme } from '@material-ui/core';
 
 interface Props {}
 
 function Services({}: Props): ReactElement {
+  const theme = useTheme();
   return (
-    <Box sx={{ minHeight: '95vh' }}>
+    <Box sx={{ mt: -5 }}>
       <Container maxWidth='lg'>
         <Stack alignItems='center' sx={{ padding: '24px' }}>
           <Typography
             data-aos='zoom-out'
             variant='h2'
-            fontWeight='900'
-            fontSize='3.5rem'
-            color='orange'
+            color={theme.palette.secondary.main}
             noWrap
           >
             Services
@@ -33,7 +29,7 @@ function Services({}: Props): ReactElement {
             orientation='horizontal'
             sx={{
               width: '320px',
-              backgroundColor: '#008000',
+              backgroundColor: theme.palette.primary.main,
               height: '4px',
               marginBottom: '10px',
             }}
@@ -58,10 +54,10 @@ function Services({}: Props): ReactElement {
                   </Typography>
                   <Divider orientation='horizontal' flexItem />
                   <Typography
-                    sx={{ mt: 1, lineHeight: '2.5rem', fontSize: '1.5rem' }}
-                    variant='body1'
+                    sx={{ mt: 1 }}
                     component='div'
-                    color='black'
+                    variant='body1'
+                    color='text.secondary'
                   >
                     We are primarily a specialist web application services
                     company. For customers, we undertake all types of web
@@ -77,7 +73,7 @@ function Services({}: Props): ReactElement {
                       color: 'orange',
                     }}
                   >
-                    Learn more...{' '}
+                    <Typography variant='body1'>Learn more...</Typography>
                   </Button>
                 </Stack>
               </Grid>
@@ -92,8 +88,8 @@ function Services({}: Props): ReactElement {
                   data-aos='fade-right'
                   src='../../img/WebDev.svg'
                   alt='Web Development'
-                  width='600px'
-                  height='500px'
+                  width='100%'
+                  height='100%'
                 />
               </Grid>
             </Grid>
@@ -109,8 +105,8 @@ function Services({}: Props): ReactElement {
                   data-aos='fade-right'
                   src='../../img/WebDev.svg'
                   alt='Web Development'
-                  width='600px'
-                  height='500px'
+                  width='100%'
+                  height='100%'
                 />
               </Grid>
               <Grid
@@ -131,10 +127,10 @@ function Services({}: Props): ReactElement {
                   </Typography>
                   <Divider orientation='horizontal' flexItem />
                   <Typography
-                    sx={{ mt: 1, lineHeight: '2.5rem', fontSize: '1.5rem' }}
-                    variant='body1'
+                    sx={{ mt: 1 }}
                     component='div'
-                    color='black'
+                    variant='body1'
+                    color='text.secondary'
                   >
                     Take your web app mobile! Rather than creating 20 different
                     versions of your application, we can efficiently deliver
@@ -150,7 +146,7 @@ function Services({}: Props): ReactElement {
                       color: '#008000',
                     }}
                   >
-                    Learn more...{' '}
+                    <Typography variant='body1'>Learn more...</Typography>
                   </Button>
                 </Stack>
               </Grid>
@@ -174,10 +170,10 @@ function Services({}: Props): ReactElement {
                   </Typography>
                   <Divider orientation='horizontal' flexItem />
                   <Typography
-                    sx={{ mt: 1, lineHeight: '2.5rem', fontSize: '1.5rem' }}
-                    variant='body1'
+                    sx={{ mt: 1 }}
                     component='div'
-                    color='black'
+                    variant='body1'
+                    color='text.secondary'
                   >
                     We love developing tools to help other great people on their
                     daily work. If you need a custom application or tool,
@@ -192,7 +188,7 @@ function Services({}: Props): ReactElement {
                       color: 'orange',
                     }}
                   >
-                    Learn more...{' '}
+                    <Typography variant='body1'>Learn more...</Typography>
                   </Button>
                 </Stack>
               </Grid>
@@ -207,8 +203,8 @@ function Services({}: Props): ReactElement {
                   data-aos='fade-right'
                   src='../../img/WebDev.svg'
                   alt='Web Development'
-                  width='600px'
-                  height='500px'
+                  width='100%'
+                  height='100%'
                 />
               </Grid>
             </Grid>
