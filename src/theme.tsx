@@ -1,10 +1,10 @@
-import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 import defaultTheme from './default';
-import typography from './typography';
+//import typography from './typography';
 
-const overrides = {
-  typography: typography,
-};
+// const overrides = {
+//   typography: typography,
+// };
 // const overrides = {
 //   typography: {
 //     h1: {

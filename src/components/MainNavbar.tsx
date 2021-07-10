@@ -1,4 +1,4 @@
-import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 
@@ -9,7 +9,7 @@ import Logo from './Logo';
 import { GradientBackground, ShadowStyled } from '../styles/layoutStyled';
 import { StyledListItemButton } from '../styles/componentStyled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faHamburger } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 const MainNavbar = () => {
   return (

@@ -3,7 +3,7 @@
 export default {
   htmlFontSize: 10,
   h1: {
-    fontWeight: '900',
+    fontWeight: 900,
     fontSize: "2rem",
     letterSpacing: '-0.24px',
     '@media (min-width:600px)': {
@@ -17,7 +17,7 @@ export default {
     },
   },
   h2: {
-    fontWeight: '900',
+    fontWeight: 900,
     fontSize: "1.5rem",
     letterSpacing: '-0.24px',
     '@media (min-width:600px)': {

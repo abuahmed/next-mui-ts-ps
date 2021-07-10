@@ -1,6 +1,5 @@
 import { Card, CardContent, CardMedia, Grid } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
-import CardHeader from '@material-ui/core/CardHeader';
 import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
 import Stack from '@material-ui/core/Stack';

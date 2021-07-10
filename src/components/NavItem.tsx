@@ -1,8 +1,7 @@
 import React, { ReactNode } from 'react';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Link from '../Link';
-import { Button, ListItem } from '@material-ui/core';
+import { ListItem } from '@material-ui/core';
 
 interface Props {
   href: string;
