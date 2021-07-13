@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import ProTip from '../src/ProTip';
 import Link from '../src/Link';
-import Footer from '../src/components/footer/Footer';
+import Footer from '../src/components/Footer';
 
 export default function About() {
   return (

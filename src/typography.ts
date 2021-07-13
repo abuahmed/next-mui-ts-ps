@@ -1,7 +1,14 @@
 
-
 export default {
   htmlFontSize: 10,
+  fontFamily: [
+    'Lato',
+    'Roboto',
+    'Arial',
+    'sans-serif',
+    '"Segoe UI Emoji"',
+    '"Segoe UI Symbol"',
+  ].join(','),
   h1: {
     fontWeight: 900,
     fontSize: "2rem",

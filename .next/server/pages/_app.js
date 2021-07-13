@@ -20,11 +20,11 @@ __webpack_require__.d(__webpack_exports__, {
 var jsx_runtime_ = __webpack_require__(5282);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(9297);
-// EXTERNAL MODULE: external "@material-ui/core/styles"
-var styles_ = __webpack_require__(8604);
 ;// CONCATENATED MODULE: external "next/head"
 var head_namespaceObject = require("next/head");;
 var head_default = /*#__PURE__*/__webpack_require__.n(head_namespaceObject);
+// EXTERNAL MODULE: external "@material-ui/core/styles"
+var styles_ = __webpack_require__(8604);
 ;// CONCATENATED MODULE: external "@material-ui/core/CssBaseline"
 var CssBaseline_namespaceObject = require("@material-ui/core/CssBaseline");;
 var CssBaseline_default = /*#__PURE__*/__webpack_require__.n(CssBaseline_namespaceObject);
@@ -52,7 +52,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
 const cache = cache_default()({
   key: 'css',
   prepend: true
@@ -63,22 +62,19 @@ function MyApp(props) {
     Component,
     pageProps
   } = props;
-  return /*#__PURE__*/jsx_runtime_.jsx(styles_.StyledEngineProvider, {
-    injectFirst: true,
-    children: /*#__PURE__*/(0,jsx_runtime_.jsxs)(react_.CacheProvider, {
-      value: cache,
-      children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)((head_default()), {
-        children: [/*#__PURE__*/jsx_runtime_.jsx("title", {
-          children: "Pinnacle Softwares"
-        }), /*#__PURE__*/jsx_runtime_.jsx("meta", {
-          name: "viewport",
-          content: "initial-scale=1, width=device-width"
-        })]
-      }), /*#__PURE__*/(0,jsx_runtime_.jsxs)(styles_.ThemeProvider, {
-        theme: theme/* default */.Z,
-        children: [/*#__PURE__*/jsx_runtime_.jsx((CssBaseline_default()), {}), /*#__PURE__*/jsx_runtime_.jsx(Component, _objectSpread({}, pageProps))]
+  return /*#__PURE__*/(0,jsx_runtime_.jsxs)(react_.CacheProvider, {
+    value: cache,
+    children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)((head_default()), {
+      children: [/*#__PURE__*/jsx_runtime_.jsx("title", {
+        children: "Pinnacle Softwares"
+      }), /*#__PURE__*/jsx_runtime_.jsx("meta", {
+        name: "viewport",
+        content: "initial-scale=1, width=device-width"
       })]
-    })
+    }), /*#__PURE__*/(0,jsx_runtime_.jsxs)(styles_.ThemeProvider, {
+      theme: theme/* default */.Z,
+      children: [/*#__PURE__*/jsx_runtime_.jsx((CssBaseline_default()), {}), /*#__PURE__*/jsx_runtime_.jsx(Component, _objectSpread({}, pageProps))]
+    })]
   });
 }
 

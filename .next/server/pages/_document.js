@@ -63,7 +63,22 @@ class MyDocument extends next_document.default {
     return /*#__PURE__*/(0,jsx_runtime_.jsxs)(next_document.Html, {
       lang: "en",
       children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)(next_document.Head, {
-        children: [/*#__PURE__*/jsx_runtime_.jsx("meta", {
+        children: [/*#__PURE__*/jsx_runtime_.jsx("script", {
+          async: true,
+          src: "https://www.googletagmanager.com/gtag/js?id=G-RLH4CSJ73D"
+        }), /*#__PURE__*/jsx_runtime_.jsx("script", {
+          async: true,
+          src: "https://www.googletagmanager.com/gtag/js?id=G-RLH4CSJ73D"
+        }), /*#__PURE__*/jsx_runtime_.jsx("script", {
+          dangerouslySetInnerHTML: {
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-RLH4CSJ73D');
+          `
+          }
+        }), /*#__PURE__*/jsx_runtime_.jsx("meta", {
           name: "theme-color",
           content: theme/* default.palette.primary.main */.Z.palette.primary.main
         }), /*#__PURE__*/jsx_runtime_.jsx("link", {
@@ -73,6 +88,9 @@ class MyDocument extends next_document.default {
         }), /*#__PURE__*/jsx_runtime_.jsx("link", {
           rel: "stylesheet",
           href: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        }), /*#__PURE__*/jsx_runtime_.jsx("link", {
+          href: "https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap",
+          rel: "stylesheet"
         })]
       }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("body", {
         children: [/*#__PURE__*/jsx_runtime_.jsx(next_document.Main, {}), /*#__PURE__*/jsx_runtime_.jsx(next_document.NextScript, {})]

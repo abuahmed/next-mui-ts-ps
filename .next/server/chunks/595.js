@@ -20,6 +20,7 @@ var external_tinycolor2_default = /*#__PURE__*/__webpack_require__.n(external_ti
 ;// CONCATENATED MODULE: ./src/typography.ts
 /* harmony default export */ var typography = ({
   htmlFontSize: 10,
+  fontFamily: ['Lato', 'Roboto', 'Arial', 'sans-serif', '"Segoe UI Emoji"', '"Segoe UI Symbol"'].join(','),
   h1: {
     fontWeight: 900,
     fontSize: "2rem",
@@ -151,7 +152,7 @@ const defaultTheme = {
     },
     background: {
       default: `linear-gradient(to right, ${primary} 30%, ${secondary} 90%)`,
-      light: "#F3F5FF"
+      paper: `linear-gradient(to bottom, ${secondary} 30%, ${primary} 90%)`
     }
   },
   typography: _objectSpread({}, typography),

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { StyledEngineProvider } from '@material-ui/core/styles';
 
 import Head from 'next/head';
 import { AppProps } from 'next/app';
@@ -15,18 +14,16 @@ cache.compat = true;
 export default function MyApp(props: AppProps) {
   const { Component, pageProps } = props;
   return (
-    <StyledEngineProvider injectFirst>
-      <CacheProvider value={cache}>
-        <Head>
-          <title>Pinnacle Softwares</title>
-          <meta name='viewport' content='initial-scale=1, width=device-width' />
-        </Head>
-        <ThemeProvider theme={theme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </CacheProvider>
-    </StyledEngineProvider>
+    <CacheProvider value={cache}>
+      <Head>
+        <title>Pinnacle Softwares</title>
+        <meta name='viewport' content='initial-scale=1, width=device-width' />
+      </Head>
+      <ThemeProvider theme={theme}>
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </CacheProvider>
   );
 }

@@ -65,7 +65,7 @@ const defaultTheme = {
     },
     background: {
       default: `linear-gradient(to right, ${primary} 30%, ${secondary} 90%)`,
-      light: "#F3F5FF",
+      paper: `linear-gradient(to bottom, ${secondary} 30%, ${primary} 90%)`,
     },
   },
   typography: { ...typography },

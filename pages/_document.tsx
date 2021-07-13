@@ -16,6 +16,34 @@ export default class MyDocument extends Document {
     return (
       <Html lang='en'>
         <Head>
+          {/* Global site tag (gtag.js) - Google Analytics */}
+          <script
+            async
+            src='https://www.googletagmanager.com/gtag/js?id=G-RLH4CSJ73D'
+          ></script>
+          {/* Global site tag (gtag.js) - Google Analytics */}
+          <script
+            async
+            src='https://www.googletagmanager.com/gtag/js?id=G-RLH4CSJ73D'
+          ></script>
+          {/* <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-RLH4CSJ73D');
+          </script> */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-RLH4CSJ73D');
+          `,
+            }}
+          />
+
           {/* PWA primary color */}
           <meta name='theme-color' content={theme.palette.primary.main} />
           <link
@@ -26,6 +54,11 @@ export default class MyDocument extends Document {
           <link
             rel='stylesheet'
             href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
+          />
+
+          <link
+            href='https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;display=swap'
+            rel='stylesheet'
           />
         </Head>
         <body>

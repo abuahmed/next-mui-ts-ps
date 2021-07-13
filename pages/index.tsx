@@ -1,13 +1,13 @@
 import * as React from 'react';
-import Footer from '../src/components/footer/Footer';
-import Header from '../src/components/header/Header';
+import Footer from '../src/components/Footer';
+import Header from '../src/components/Header';
 import { MainLayoutRoot, MainLayoutWrapper } from '../src/styles/layoutStyled';
-import MainNavbar from '../src/components/MainNavbar';
+import Navbar from '../src/components/Navbar';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Services from '../src/components/services/Services';
-import About from '../src/components/about/About';
-import Contact from '../src/components/contact/Contact';
+import Services from '../src/components/Services';
+import About from '../src/components/About';
+import GetStarted from '../src/components/GetStarted';
 
 export default function Index() {
   React.useEffect(() => {
@@ -18,12 +18,12 @@ export default function Index() {
   }, []);
   return (
     <MainLayoutRoot>
-      <MainNavbar />
+      <Navbar />
       <MainLayoutWrapper>
         <Header />
         <Services />
         <About />
-        <Contact />
+        <GetStarted />
       </MainLayoutWrapper>
 
       <Footer />

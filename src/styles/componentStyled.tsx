@@ -23,11 +23,14 @@ export const StyledListItemButton = experimentalStyled(
   //color: 'white',
   color: theme.palette.getContrastText(theme.palette.primary.light),
   fontSize: '1rem',
+  [theme.breakpoints.up('sm')]: {
+    fontSize: '1rem',
+  },
   [theme.breakpoints.up('md')]: {
-    fontSize: '1.5rem',
+    fontSize: '1.2rem',
   },
   [theme.breakpoints.up('lg')]: {
-    fontSize: '2.5rem',
+    fontSize: '1.5rem',
   },
   fontWeight: 'bold',
 
@@ -35,6 +38,28 @@ export const StyledListItemButton = experimentalStyled(
     color: 'white',
   },
 }));
+export const StyledButton = experimentalStyled(Button)<ButtonProps>(
+  ({ theme }) => ({
+    //color: 'white',
+    color: theme.palette.getContrastText(theme.palette.secondary.light),
+    fontSize: '1rem',
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '1rem',
+      color: theme.palette.getContrastText(theme.palette.primary.light),
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '1.2rem',
+    },
+    [theme.breakpoints.up('lg')]: {
+      fontSize: '1.5rem',
+    },
+    fontWeight: 'bold',
+
+    '&:hover': {
+      color: 'white',
+    },
+  })
+);
 export const ColorButton = experimentalStyled(Button)<ButtonProps>(
   ({ theme }) => ({
     color: theme.palette.getContrastText(orange[500]),
