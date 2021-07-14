@@ -4,7 +4,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
+//import Button from '@material-ui/core/Button';
+import LoadingButton from '@material-ui/lab/LoadingButton';
+
 import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
@@ -12,10 +14,92 @@ import Stack from '@material-ui/core/Stack';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import React, { ReactElement } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 interface Props {}
 
 function GetStarted({}: Props): ReactElement {
+  const [loading, setLoading] = React.useState(false);
+  // const [email, setEmail] = React.useState('');
+  // const [phone, setPhone] = React.useState('');
+  // const [message, setMessage] = React.useState('');
+  const recaptchaRef = React.createRef<ReCAPTCHA>();
+
+  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setEmail(e.target.value);
+  // };
+  const [formData, setFormData] = React.useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+
+  const { name, email, phone, message } = formData;
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    recaptchaRef.current!.execute();
+  };
+
+  const onReCAPTCHAChange = async (captchaCode: string | undefined | null) => {
+    // If the reCAPTCHA code is null or undefined indicating that
+    // the reCAPTCHA was expired then return early
+    if (!captchaCode) {
+      return;
+    }
+    try {
+      setLoading(true);
+
+      const response = await fetch('/api/start', {
+        method: 'POST',
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          message,
+          captcha: captchaCode,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (response.ok) {
+        // If the response is ok than show the success alert
+        alert('Email registered successfully');
+      } else {
+        // Else throw an error with the message returned
+        // from the API
+        const error = await response.json();
+        throw new Error(error.message);
+      }
+    } catch (error) {
+      alert(error?.message || 'Something went wrong');
+    } finally {
+      // Reset the reCAPTCHA when the request has failed or succeeeded
+      // so that it can be executed again if user submits another email.
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+      });
+      setLoading(false);
+      if (recaptchaRef.current) recaptchaRef.current.reset();
+    }
+  };
+
+  // // Else reCAPTCHA was executed successfully so proceed with the
+  // // alert
+  // alert(`Hey, ${email}`);
+  // // Reset the reCAPTCHA so that it can be executed again if user
+  // // submits another email.
+  // recaptchaRef.current!.reset();
+  //};
+
   return (
     <Box
       id='getstarted'
@@ -66,42 +150,64 @@ function GetStarted({}: Props): ReactElement {
               xs={12}
               sx={{ pb: 8 }}
             >
-              <Stack
-                color='#008000'
-                sx={{ backgroundColor: '#fff', p: 3, borderRadius: 2 }}
-              >
-                <Typography variant='h4' fontWeight='900' noWrap>
-                  <FontAwesomeIcon icon={faProjectDiagram} />
-                  &nbsp;Start your project
-                </Typography>
-
-                <TextField
-                  id='name'
-                  label='Name'
-                  variant='outlined'
-                  margin='normal'
-                />
-                <TextField
-                  id='email'
-                  label='Email or Phone'
-                  variant='outlined'
-                  margin='normal'
-                />
-                <TextField
-                  id='message'
-                  label='Message'
-                  variant='outlined'
-                  multiline
-                  rows={6}
-                  margin='normal'
-                />
-                <Button
-                  variant='contained'
-                  endIcon={<FontAwesomeIcon icon={faPaperPlane} />}
+              <form onSubmit={handleSubmit}>
+                <Stack
+                  color='#008000'
+                  sx={{ backgroundColor: '#fff', p: 3, borderRadius: 2 }}
                 >
-                  Submit
-                </Button>
-              </Stack>
+                  <Typography variant='h4' fontWeight='900' noWrap>
+                    <FontAwesomeIcon icon={faProjectDiagram} />
+                    &nbsp;Start your project
+                  </Typography>
+
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    size='invisible'
+                    sitekey={
+                      process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string
+                    }
+                    onChange={onReCAPTCHAChange}
+                  />
+                  <TextField
+                    id='name'
+                    onChange={handleChange}
+                    name='name'
+                    value={name}
+                    label='Name'
+                    variant='outlined'
+                    margin='normal'
+                  />
+                  <TextField
+                    id='email'
+                    onChange={handleChange}
+                    name='email'
+                    value={email}
+                    label='Email or Phone'
+                    variant='outlined'
+                    margin='normal'
+                  />
+                  <TextField
+                    id='message'
+                    onChange={handleChange}
+                    name='message'
+                    value={message}
+                    label='Message'
+                    variant='outlined'
+                    multiline
+                    rows={6}
+                    margin='normal'
+                  />
+                  <LoadingButton
+                    loading={loading}
+                    loadingPosition='start'
+                    type='submit'
+                    variant='contained'
+                    endIcon={<FontAwesomeIcon icon={faPaperPlane} />}
+                  >
+                    Submit
+                  </LoadingButton>
+                </Stack>
+              </form>
             </Grid>
           </Grid>
         </Stack>
