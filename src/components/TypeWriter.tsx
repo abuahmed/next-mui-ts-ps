@@ -59,7 +59,7 @@ function TypeWriter() {
   const theme = useTheme();
   return (
     <Stack spacing={1}>
-      <Typography variant='h2' component='h2'>
+      <Typography variant='h2' component='div'>
         Get websites that are: <br />
         <Typography
           fontWeight='700'

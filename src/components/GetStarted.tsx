@@ -15,19 +15,17 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import React, { ReactElement } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
+import Toast from './Toast';
 
 interface Props {}
 
 function GetStarted({}: Props): ReactElement {
   const [loading, setLoading] = React.useState(false);
-  // const [email, setEmail] = React.useState('');
-  // const [phone, setPhone] = React.useState('');
-  // const [message, setMessage] = React.useState('');
+  const [success, setSuccess] = React.useState('');
+  const [error, setError] = React.useState('');
+
   const recaptchaRef = React.createRef<ReCAPTCHA>();
 
-  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setEmail(e.target.value);
-  // };
   const [formData, setFormData] = React.useState({
     name: '',
     email: '',
@@ -68,18 +66,16 @@ function GetStarted({}: Props): ReactElement {
         },
       });
       if (response.ok) {
-        // If the response is ok than show the success alert
-        alert('Email registered successfully');
+        const success = await response.json();
+        setSuccess(success?.message);
       } else {
-        // Else throw an error with the message returned
-        // from the API
         const error = await response.json();
-        throw new Error(error.message);
+        setError(error?.message);
       }
     } catch (error) {
-      alert(error?.message || 'Something went wrong');
+      setError(error?.message || 'Something went wrong');
     } finally {
-      // Reset the reCAPTCHA when the request has failed or succeeeded
+      // Reset the reCAPTCHA when the request has failed or succeeded
       // so that it can be executed again if user submits another email.
       setFormData({
         name: '',
@@ -88,6 +84,8 @@ function GetStarted({}: Props): ReactElement {
         message: '',
       });
       setLoading(false);
+      setSuccess('');
+      setError('');
       if (recaptchaRef.current) recaptchaRef.current.reset();
     }
   };
@@ -115,6 +113,8 @@ function GetStarted({}: Props): ReactElement {
           <Typography data-aos='fade-up' variant='h2' color='black' noWrap>
             Get Started
           </Typography>
+          {error && <Toast severity='error'>{error}</Toast>}
+          {success && <Toast severity='success'>{success}</Toast>}
           <Divider
             data-aos='zoom-in'
             orientation='horizontal'
@@ -199,7 +199,7 @@ function GetStarted({}: Props): ReactElement {
                   />
                   <LoadingButton
                     loading={loading}
-                    loadingPosition='start'
+                    loadingPosition='end'
                     type='submit'
                     variant='contained'
                     endIcon={<FontAwesomeIcon icon={faPaperPlane} />}
