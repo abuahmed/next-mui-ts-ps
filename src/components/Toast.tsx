@@ -14,6 +14,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 type Severity = 'error' | 'success' | 'info' | 'warning' | undefined;
 
 interface Props {
+  setToDefault: () => void;
   severity: Severity;
   children: string;
 }
@@ -21,7 +22,7 @@ export interface State extends SnackbarOrigin {
   open: boolean;
 }
 
-export default function Toast({ severity, children }: Props) {
+export default function Toast({ setToDefault, severity, children }: Props) {
   //const [open, setOpen] = React.useState(true);
   const theme = useTheme();
   const [state, setState] = React.useState<State>({
@@ -31,12 +32,13 @@ export default function Toast({ severity, children }: Props) {
   });
   const { vertical, horizontal, open } = state;
 
-  const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
+  const handleClose = (_event?: React.SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') {
       return;
     }
     //setOpen(false);
     setState({ ...state, open: false });
+    setToDefault();
   };
 
   return (

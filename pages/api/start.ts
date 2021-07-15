@@ -6,7 +6,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { body, method } = req;
 
     const { name, email, phone, message, captcha } = body;
-    console.log(body)
+    //console.log(body)
 
 
     if (method === "POST") {
@@ -52,7 +52,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                         ],
                     },
                 });
-                console.log(result.data);
+                //console.log(result.data);
                 //return result.data;
                 if (result.data) {
                     return res.status(200).json({ message: "Your form has been submitted!,We will get back to you soon. Have a great day!" });

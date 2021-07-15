@@ -4,7 +4,7 @@ import typography from './typography';
 const primary = "#008000";
 const secondary = "#FFA500";
 const warning = "#FFC260";
-const success = "#3CD4A0";
+const success = "#2e7d32";
 const info = "#9013FE";
 
 const lightenRate = 7.5;

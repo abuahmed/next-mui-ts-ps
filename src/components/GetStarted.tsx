@@ -23,7 +23,6 @@ function GetStarted({}: Props): ReactElement {
   const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState('');
   const [error, setError] = React.useState('');
-
   const recaptchaRef = React.createRef<ReCAPTCHA>();
 
   const [formData, setFormData] = React.useState({
@@ -34,6 +33,11 @@ function GetStarted({}: Props): ReactElement {
   });
 
   const { name, email, phone, message } = formData;
+
+  const setToDefault = () => {
+    setSuccess('');
+    setError('');
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -84,19 +88,10 @@ function GetStarted({}: Props): ReactElement {
         message: '',
       });
       setLoading(false);
-      setSuccess('');
-      setError('');
+
       if (recaptchaRef.current) recaptchaRef.current.reset();
     }
   };
-
-  // // Else reCAPTCHA was executed successfully so proceed with the
-  // // alert
-  // alert(`Hey, ${email}`);
-  // // Reset the reCAPTCHA so that it can be executed again if user
-  // // submits another email.
-  // recaptchaRef.current!.reset();
-  //};
 
   return (
     <Box
@@ -113,8 +108,16 @@ function GetStarted({}: Props): ReactElement {
           <Typography data-aos='fade-up' variant='h2' color='black' noWrap>
             Get Started
           </Typography>
-          {error && <Toast severity='error'>{error}</Toast>}
-          {success && <Toast severity='success'>{success}</Toast>}
+          {error && (
+            <Toast setToDefault={setToDefault} severity='error'>
+              {error}
+            </Toast>
+          )}
+          {success && (
+            <Toast setToDefault={setToDefault} severity='success'>
+              {success}
+            </Toast>
+          )}
           <Divider
             data-aos='zoom-in'
             orientation='horizontal'
