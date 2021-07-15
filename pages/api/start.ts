@@ -1,13 +1,55 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import fetch from "node-fetch";
 import { google } from 'googleapis';
+import Cors from 'cors'
+// Initializing the cors middleware
+// const cors = Cors({
+//     methods: ['GET', 'HEAD','POST'],
+// })
+
+function initMiddleware(middleware: any) {
+    return (req: any, res: any) =>
+        new Promise((resolve, reject) => {
+            middleware(req, res, (result: any) => {
+                if (result instanceof Error) {
+                    return reject(result)
+                }
+                return resolve(result)
+            })
+        })
+}
+
+const cors = initMiddleware(
+    // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
+    Cors({
+        // Only allow requests with GET, POST and OPTIONS
+        methods: ['GET', 'POST', 'OPTIONS'],
+    })
+)
+// Helper method to wait for a middleware to execute before continuing
+// And to throw an error when an error happens in a middleware
+// function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: NextApiHandler) {
+//     return new Promise((resolve, reject) => {
+//         fn(req, res, (result) => {
+//             if (result instanceof Error) {
+//                 return reject(result)
+//             }
+
+//             return resolve(result)
+//         })
+//     })
+// }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+
+    // Run the middleware
+    await cors(req, res)
+
     const { body, method } = req;
 
     const bd = JSON.parse(body)
     const { name, email, phone, message, captcha } = bd;
-    //console.log(bd)
+    //console.log(body)
 
 
     if (method === "POST") {

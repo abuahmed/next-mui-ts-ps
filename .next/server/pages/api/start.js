@@ -4,7 +4,7 @@ exports.id = 797;
 exports.ids = [797];
 exports.modules = {
 
-/***/ 6041:
+/***/ 1634:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21,10 +21,49 @@ var external_node_fetch_namespaceObject = require("node-fetch");;
 var external_node_fetch_default = /*#__PURE__*/__webpack_require__.n(external_node_fetch_namespaceObject);
 ;// CONCATENATED MODULE: external "googleapis"
 var external_googleapis_namespaceObject = require("googleapis");;
+;// CONCATENATED MODULE: external "cors"
+var external_cors_namespaceObject = require("cors");;
+var external_cors_default = /*#__PURE__*/__webpack_require__.n(external_cors_namespaceObject);
 ;// CONCATENATED MODULE: ./pages/api/start.ts
 
 
+ // Initializing the cors middleware
+// const cors = Cors({
+//     methods: ['GET', 'HEAD','POST'],
+// })
+
+function initMiddleware(middleware) {
+  return (req, res) => new Promise((resolve, reject) => {
+    middleware(req, res, result => {
+      if (result instanceof Error) {
+        return reject(result);
+      }
+
+      return resolve(result);
+    });
+  });
+}
+
+const cors = initMiddleware( // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
+external_cors_default()({
+  // Only allow requests with GET, POST and OPTIONS
+  methods: ['GET', 'POST', 'OPTIONS']
+})); // Helper method to wait for a middleware to execute before continuing
+// And to throw an error when an error happens in a middleware
+// function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: NextApiHandler) {
+//     return new Promise((resolve, reject) => {
+//         fn(req, res, (result) => {
+//             if (result instanceof Error) {
+//                 return reject(result)
+//             }
+//             return resolve(result)
+//         })
+//     })
+// }
+
 async function handler(req, res) {
+  // Run the middleware
+  await cors(req, res);
   const {
     body,
     method
@@ -36,7 +75,7 @@ async function handler(req, res) {
     phone,
     message,
     captcha
-  } = bd; //console.log(bd)
+  } = bd; //console.log(body)
 
   if (method === "POST") {
     // If email or captcha are missing return an error
@@ -114,7 +153,7 @@ async function handler(req, res) {
 var __webpack_require__ = require("../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
-var __webpack_exports__ = (__webpack_exec__(6041));
+var __webpack_exports__ = (__webpack_exec__(1634));
 module.exports = __webpack_exports__;
 
 })();
