@@ -66,7 +66,6 @@ function GetStarted({}: Props): ReactElement {
           captcha: captchaCode,
         }),
         headers: {
-          'Content-Type': 'application/json',
           Accept: 'application/json, text/plain, */*',
           'User-Agent': '*',
         },

@@ -33,6 +33,7 @@
     "dev": "next",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
+    "clean": "rm -rf .next",
     "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
   },
   "devDependencies": {

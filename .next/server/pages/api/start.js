@@ -29,13 +29,14 @@ async function handler(req, res) {
     body,
     method
   } = req;
+  const bd = JSON.parse(body);
   const {
     name,
     email,
     phone,
     message,
     captcha
-  } = body; //console.log(body)
+  } = bd; //console.log(bd)
 
   if (method === "POST") {
     // If email or captcha are missing return an error

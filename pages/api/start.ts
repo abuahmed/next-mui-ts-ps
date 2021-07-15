@@ -5,8 +5,9 @@ import { google } from 'googleapis';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { body, method } = req;
 
-    const { name, email, phone, message, captcha } = body;
-    //console.log(body)
+    const bd = JSON.parse(body)
+    const { name, email, phone, message, captcha } = bd;
+    //console.log(bd)
 
 
     if (method === "POST") {
