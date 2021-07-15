@@ -24,6 +24,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 {
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+                        Accept: 'application/json, text/plain, */*',
+                        'User-Agent': '*',
                     },
                     method: "POST",
                 }

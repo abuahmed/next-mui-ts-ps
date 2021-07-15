@@ -49,7 +49,9 @@ async function handler(req, res) {
       // Ping the google recaptcha verify API to verify the captcha code you received
       const response = await external_node_fetch_default()(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captcha}`, {
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
+          "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+          Accept: 'application/json, text/plain, */*',
+          'User-Agent': '*'
         },
         method: "POST"
       });

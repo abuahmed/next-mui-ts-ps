@@ -67,6 +67,8 @@ function GetStarted({}: Props): ReactElement {
         }),
         headers: {
           'Content-Type': 'application/json',
+          Accept: 'application/json, text/plain, */*',
+          'User-Agent': '*',
         },
       });
       if (response.ok) {
