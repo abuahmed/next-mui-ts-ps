@@ -48,20 +48,10 @@ function initMiddleware(middleware) {
 const cors = initMiddleware( // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
 external_cors_default()({
   // Only allow requests with GET, POST and OPTIONS
-  methods: ['GET', 'POST', 'OPTIONS']
-})); // Helper method to wait for a middleware to execute before continuing
-// And to throw an error when an error happens in a middleware
-// function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: NextApiHandler) {
-//     return new Promise((resolve, reject) => {
-//         fn(req, res, (result) => {
-//             if (result instanceof Error) {
-//                 return reject(result)
-//             }
-//             return resolve(result)
-//         })
-//     })
-// }
-
+  methods: ['GET', 'POST', 'OPTIONS'],
+  origin: '*',
+  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization']
+}));
 async function handler(req, res) {
   // Run the middleware
   await cors(req, res);
@@ -90,9 +80,7 @@ async function handler(req, res) {
       // Ping the google recaptcha verify API to verify the captcha code you received
       const config = {
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
-          Accept: 'application/json, text/plain, */*',
-          'User-Agent': '*'
+          "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
         }
       };
       const {

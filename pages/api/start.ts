@@ -25,21 +25,11 @@ const cors = initMiddleware(
     Cors({
         // Only allow requests with GET, POST and OPTIONS
         methods: ['GET', 'POST', 'OPTIONS'],
+        origin: '*',
+        allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization']
     })
 )
-// Helper method to wait for a middleware to execute before continuing
-// And to throw an error when an error happens in a middleware
-// function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: NextApiHandler) {
-//     return new Promise((resolve, reject) => {
-//         fn(req, res, (result) => {
-//             if (result instanceof Error) {
-//                 return reject(result)
-//             }
 
-//             return resolve(result)
-//         })
-//     })
-// }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
@@ -65,8 +55,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             const config = {
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
-                    Accept: 'application/json, text/plain, */*',
-                    'User-Agent': '*',
+
                 },
             };
 

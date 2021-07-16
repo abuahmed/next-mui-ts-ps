@@ -72,7 +72,7 @@ function GetStarted({}: Props): ReactElement {
         },
         config
       );
-      //console.log(response);
+      console.log(response);
 
       // const response = await fetch('/api/start',
       //   method: 'POST',
