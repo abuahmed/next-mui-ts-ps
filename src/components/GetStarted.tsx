@@ -1,12 +1,11 @@
+import axios from 'axios';
 import {
   faPaperPlane,
   faProjectDiagram,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Box from '@material-ui/core/Box';
-//import Button from '@material-ui/core/Button';
 import LoadingButton from '@material-ui/lab/LoadingButton';
-
 import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
@@ -56,25 +55,44 @@ function GetStarted({}: Props): ReactElement {
     try {
       setLoading(true);
 
-      const response = await fetch('/api/start', {
-        method: 'POST',
-        body: JSON.stringify({
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+
+      const response = await axios.post(
+        '/api/start',
+        {
           name,
           email,
           phone,
           message,
           captcha: captchaCode,
-        }),
-        headers: {
-          Accept: 'application/json, text/plain, */*',
-          'User-Agent': '*',
         },
-      });
-      if (response.ok) {
-        const success = await response.json();
+        config
+      );
+      //console.log(response);
+
+      // const response = await fetch('/api/start',
+      //   method: 'POST',
+      //   body: JSON.stringify({
+      //     name,
+      //     email,
+      //     phone,
+      //     message,
+      //     captcha: captchaCode,
+      //   }),
+      //   headers: {
+      //     Accept: 'application/json, text/plain, */*',
+      //     'User-Agent': '*',
+      //   },
+      // });
+      if (response.status == 200) {
+        const success = response.data;
         setSuccess(success?.message);
       } else {
-        const error = await response.json();
+        const error = response.data;
         setError(error?.message);
       }
     } catch (error) {

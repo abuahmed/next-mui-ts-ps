@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import fetch from "node-fetch";
+//import fetch from "node-fetch";
+import axios from 'axios';
 import { google } from 'googleapis';
 import Cors from 'cors'
 // Initializing the cors middleware
@@ -46,9 +47,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     await cors(req, res)
 
     const { body, method } = req;
-
-    const bd = JSON.parse(body)
-    const { name, email, phone, message, captcha } = bd;
+    //const bd = JSON.parse(body)
+    const { name, email, phone, message, captcha } = body;
     //console.log(body)
 
 
@@ -62,20 +62,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         try {
             // Ping the google recaptcha verify API to verify the captcha code you received
-            const response = await fetch(
-                `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captcha}`,
-                {
-                    headers: {
-                        "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
-                        Accept: 'application/json, text/plain, */*',
-                        'User-Agent': '*',
-                    },
-                    method: "POST",
-                }
-            );
-            const captchaValidation = await response.json();
+            const config = {
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+                    Accept: 'application/json, text/plain, */*',
+                    'User-Agent': '*',
+                },
+            };
 
-            if (captchaValidation.success) {
+            const { data } = await axios.post(
+                `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captcha}`,
+                config
+            );
+            //const captchaValidation = data// await response.json();
+
+            if (data.success) {
 
                 const auth = new google.auth.GoogleAuth({
                     keyFile: "keys.json", //the key file

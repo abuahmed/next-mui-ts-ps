@@ -4,7 +4,7 @@ exports.id = 797;
 exports.ids = [797];
 exports.modules = {
 
-/***/ 1634:
+/***/ 2763:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16,15 +16,16 @@ __webpack_require__.d(__webpack_exports__, {
   "default": function() { return /* binding */ handler; }
 });
 
-;// CONCATENATED MODULE: external "node-fetch"
-var external_node_fetch_namespaceObject = require("node-fetch");;
-var external_node_fetch_default = /*#__PURE__*/__webpack_require__.n(external_node_fetch_namespaceObject);
+// EXTERNAL MODULE: external "axios"
+var external_axios_ = __webpack_require__(2376);
+var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_);
 ;// CONCATENATED MODULE: external "googleapis"
 var external_googleapis_namespaceObject = require("googleapis");;
 ;// CONCATENATED MODULE: external "cors"
 var external_cors_namespaceObject = require("cors");;
 var external_cors_default = /*#__PURE__*/__webpack_require__.n(external_cors_namespaceObject);
 ;// CONCATENATED MODULE: ./pages/api/start.ts
+//import fetch from "node-fetch";
 
 
  // Initializing the cors middleware
@@ -67,15 +68,15 @@ async function handler(req, res) {
   const {
     body,
     method
-  } = req;
-  const bd = JSON.parse(body);
+  } = req; //const bd = JSON.parse(body)
+
   const {
     name,
     email,
     phone,
     message,
     captcha
-  } = bd; //console.log(body)
+  } = body; //console.log(body)
 
   if (method === "POST") {
     // If email or captcha are missing return an error
@@ -87,17 +88,18 @@ async function handler(req, res) {
 
     try {
       // Ping the google recaptcha verify API to verify the captcha code you received
-      const response = await external_node_fetch_default()(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captcha}`, {
+      const config = {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
           Accept: 'application/json, text/plain, */*',
           'User-Agent': '*'
-        },
-        method: "POST"
-      });
-      const captchaValidation = await response.json();
+        }
+      };
+      const {
+        data
+      } = await external_axios_default().post(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captcha}`, config); //const captchaValidation = data// await response.json();
 
-      if (captchaValidation.success) {
+      if (data.success) {
         const auth = new external_googleapis_namespaceObject.google.auth.GoogleAuth({
           keyFile: "keys.json",
           //the key file
@@ -144,6 +146,14 @@ async function handler(req, res) {
   return res.status(404).send("Not found");
 }
 
+/***/ }),
+
+/***/ 2376:
+/***/ (function(module) {
+
+"use strict";
+module.exports = require("axios");;
+
 /***/ })
 
 };
@@ -153,7 +163,7 @@ async function handler(req, res) {
 var __webpack_require__ = require("../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
-var __webpack_exports__ = (__webpack_exec__(1634));
+var __webpack_exports__ = (__webpack_exec__(2763));
 module.exports = __webpack_exports__;
 
 })();
